@@ -1,12 +1,36 @@
-# React + Vite
+# Cat Image Explorer 🐈
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# What was developed
 
-Currently, two official plugins are available:
+The Cat Image Explorer is a simple web application that allows users to search and display random cat images using [The Cat API](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=bOoHBz-8t). The application features a button that, when clicked, makes a request to the API and displays a new cat image.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Image Search:** By clicking the "CLICK ME!" button, a request is made to The Cat API to obtain a random cat image.
+- **Image Display:** The image obtained from the API is displayed on the screen through the InfoCard component.
+- **Error Handling:** If an error occurs while fetching the image from the API, an error message is displayed on the screen, and the button remains visible to allow for retries.
 
-## Expanding the ESLint configuration
+## Technologies
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+> React | JavaScript | Axios | Material UI | Vite | VS Code.
+
+
+## Execute the project
+
+1. __Clone the repository__
+
+```bash
+git clone https://github.com/KarenLukianyAlmeida/testing-axios-with-react
+```
+
+2. __Install the dependencies__
+
+Run the command in the root of the project.
+
+```bash
+npm install
+```
+
+3. __To start the local server__
+
+```bash
+npm run dev
+```
