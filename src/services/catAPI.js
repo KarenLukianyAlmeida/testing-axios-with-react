@@ -18,20 +18,18 @@ export async function getCatImage() {
   } catch (error) {
     if (axios.isAxiosError(error)) {
       if (error.response?.status === 404) {
-        throw new Error("Nenhuma imagem de gato encontrada!");
+        throw new Error("No cat image found!");
       } else if (error.response?.status) {
         throw new Error(
-          `Erro ao buscar imagem de gato: Status ${error.response.status}`
+          `Error fetching cat image: Status ${error.response.status}`
         );
       } else if (error.request) {
-        throw new Error(
-          "Erro ao buscar imagem de gato: Sem resposta do servidor"
-        );
+        throw new Error("Error fetching cat image: No response from server");
       } else {
-        throw new Error(`Erro ao buscar imagem de gato: ${error.message}`);
+        throw new Error(`Error fetching cat image: ${error.message}`);
       }
     } else {
-      throw new Error("Erro inesperado ao buscar imagem de gato");
+      throw new Error("Unexpected error fetching cat image");
     }
   }
 }

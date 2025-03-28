@@ -20,10 +20,9 @@ function App() {
 
   return (
     <div>
-      {error && error.message === "Nenhuma imagem de gato encontrada!" ? (
+      {error && error.message === "No cat image found!" ? (
         <p>
-          Desculpe, não encontramos nenhuma imagem de gato agora. Tente
-          novamente!
+          Sorry, we couldn't find any cat images right now. Please try again!
         </p>
       ) : error ? (
         <p>{error.message}</p>
