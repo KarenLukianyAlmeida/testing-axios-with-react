@@ -3,6 +3,7 @@ import "./App.css";
 import InfoCard from "./components/InfoCard";
 import { useState } from "react";
 import { getCatImage } from "./services/catAPI";
+import ErrorMessage from "./components/ErrorMessage";
 
 function App() {
   const [infoCat, setInfoCat] = useState("");
@@ -14,18 +15,13 @@ function App() {
       setInfoCat(imageUrl);
     } catch (error) {
       setError(error);
-      console.log(error);
     }
   };
 
   return (
     <div>
-      {error && error.message === "No cat image found!" ? (
-        <p>
-          Sorry, we couldn't find any cat images right now. Please try again!
-        </p>
-      ) : error ? (
-        <p>{error.message}</p>
+      {error ? (
+        <ErrorMessage errorData={error} />
       ) : (
         infoCat && <InfoCard imageUrl={infoCat} />
       )}

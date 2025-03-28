@@ -1,5 +1,7 @@
-img {
+.cat-picture {
   width: 500px;
   height: 500px;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0px 0px 16px 0px rgba(109, 110, 130, 0.32);
 }

@@ -1,12 +1,13 @@
 import axios from "axios";
+import { handleApiError } from "../utils/handleApiErrors";
 
-const api_key = import.meta.env.VITE_API_KEY;
-const baseURL = "https://api.thecatapi.com";
+const API_KEY = import.meta.env.VITE_API_KEY;
+const BASE_URL = "https://api.thecatapi.com";
 
 const api = axios.create({
-  baseURL: baseURL,
+  baseURL: BASE_URL,
   headers: {
-    "x-api-key": api_key,
+    "x-api-key": API_KEY,
   },
 });
 
@@ -16,20 +17,6 @@ export async function getCatImage() {
     const catImage = response.data[0].url;
     return catImage;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      if (error.response?.status === 404) {
-        throw new Error("No cat image found!");
-      } else if (error.response?.status) {
-        throw new Error(
-          `Error fetching cat image: Status ${error.response.status}`
-        );
-      } else if (error.request) {
-        throw new Error("Error fetching cat image: No response from server");
-      } else {
-        throw new Error(`Error fetching cat image: ${error.message}`);
-      }
-    } else {
-      throw new Error("Unexpected error fetching cat image");
-    }
+    throw handleApiError(error);
   }
 }
