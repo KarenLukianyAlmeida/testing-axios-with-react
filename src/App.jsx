@@ -12,7 +12,6 @@ function App() {
     try {
       const imageUrl = await getCatImage();
       setInfoCat(imageUrl);
-      console.log(infoCat);
     } catch (error) {
       setError(error);
       console.log(error);
@@ -21,8 +20,13 @@ function App() {
 
   return (
     <div>
-      {error ? (
-        <div>Erro ao carregar imagem: {error.message}</div>
+      {error && error.message === "Nenhuma imagem de gato encontrada!" ? (
+        <p>
+          Desculpe, não encontramos nenhuma imagem de gato agora. Tente
+          novamente!
+        </p>
+      ) : error ? (
+        <p>{error.message}</p>
       ) : (
         infoCat && <InfoCard imageUrl={infoCat} />
       )}

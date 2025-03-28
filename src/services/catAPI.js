@@ -14,10 +14,24 @@ export async function getCatImage() {
   try {
     const response = await api.get("/v1/images/search");
     const catImage = response.data[0].url;
-    console.log("URL da imagem da API:", catImage);
     return catImage;
   } catch (error) {
-    console.log("Erro ao buscar imagem da API:", error);
-    throw error;
+    if (axios.isAxiosError(error)) {
+      if (error.response?.status === 404) {
+        throw new Error("Nenhuma imagem de gato encontrada!");
+      } else if (error.response?.status) {
+        throw new Error(
+          `Erro ao buscar imagem de gato: Status ${error.response.status}`
+        );
+      } else if (error.request) {
+        throw new Error(
+          "Erro ao buscar imagem de gato: Sem resposta do servidor"
+        );
+      } else {
+        throw new Error(`Erro ao buscar imagem de gato: ${error.message}`);
+      }
+    } else {
+      throw new Error("Erro inesperado ao buscar imagem de gato");
+    }
   }
 }
