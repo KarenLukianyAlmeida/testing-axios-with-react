@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { handleApiError } from "../utils/handleApiErrors";
 
-const API_KEY = import.meta.env.VITE_API_KEY;
+const API_KEY: string = import.meta.env.VITE_API_KEY;
 const BASE_URL = "https://api.thecatapi.com";
 
 const api = axios.create({
@@ -11,9 +11,15 @@ const api = axios.create({
   },
 });
 
-export async function getCatImage() {
+type CatImageResponse = {
+  url: string;
+};
+
+export async function getCatImage(): Promise<string> {
   try {
-    const response = await api.get("/v1/images/search");
+    const response: AxiosResponse<CatImageResponse[]> = await api.get(
+      "/v1/images/search"
+    );
     const catImage = response.data[0].url;
     return catImage;
   } catch (error) {

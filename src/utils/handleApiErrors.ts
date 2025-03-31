@@ -8,7 +8,7 @@ const ApiError = {
   ServiceUnavailable: 503,
 };
 
-export function handleApiError(error) {
+export function handleApiError(error: unknown): string {
   if (axios.isAxiosError(error) && error.response) {
     const status = error.response.status;
 

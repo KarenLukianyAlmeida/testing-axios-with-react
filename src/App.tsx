@@ -6,15 +6,15 @@ import { getCatImage } from "./services/catAPI";
 import ErrorMessage from "./components/ErrorMessage";
 
 function App() {
-  const [infoCat, setInfoCat] = useState("");
-  const [error, setError] = useState(null);
+  const [infoCat, setInfoCat] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleClick = async () => {
     try {
       const imageUrl = await getCatImage();
       setInfoCat(imageUrl);
     } catch (error) {
-      setError(error);
+      setError(error as string);
     }
   };
 
