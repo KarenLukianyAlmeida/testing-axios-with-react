@@ -10,7 +10,7 @@ The Cat Image Explorer is a simple web application that allows users to search a
 
 ## Technologies
 
-> React | TypeScript | Axios | Material UI | Vite | VS Code.
+> React | TypeScript | Axios | Material UI | Vite | Vitest | RTL
 
 
 ## Execute the project
