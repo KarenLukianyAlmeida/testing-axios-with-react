@@ -34,3 +34,8 @@ npm install
 ```bash
 npm run dev
 ```
+4. __Runing the test__
+
+```bash
+npm run test
+```
